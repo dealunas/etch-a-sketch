@@ -37,44 +37,26 @@ function makeGrid(size){
     }
 };
 
-/*
+//Below is for the left knob to rotate when dragged with mouse
 //Left knob center point
-let leftCenterX = lDot.offsetLeft +lDot.offsetWidth / 2;
-let leftCenterY = rDot.offsetTop + lDot.offsetHeight / 2;
+let leftCenterX = lKnob.offsetLeft +lKnob.offsetWidth / 2;
+let leftCenterY = lKnob.offsetTop + lKnob.offsetHeight / 2;
 
-console.log(leftCenterX, leftCenterY);
-
-//Right knob center point
-let rCenterX = rDot.offsetLeft +rDot.offsetWidth / 2;
-let rCenterY = rDot.offsetTop + rDot.offsetHeight / 2;
-
-console.log(rCenterX, rCenterY);
-*/
-
-/*Calculates degree from where mouse clicks to where is drags
+//Calculates degree from where mouse clicks to where it drags
 function calculateLeftDegree(e){
-    const leftKnobPos = lKnob.getBoundingClientRect();
-    const leftX1 = leftKnobPos.x;
-    const leftY1 = leftKnobPos.y;
-    const leftX2 = e.clientX;
-    const leftY2 = e.clientY;
-    
-    const leftDeltaX = leftX2 - leftX1;
-    const leftDeltaY = leftY2 - leftY1;
+    const leftX = e.clientX;
+    const leftY = e.clientY;
 
-    const rad = Math.atan2(leftDeltaY, leftDeltaX);
-    let deg = (180/Math.PI) * rad;
-    console.log(deg)
+    const rad = Math.atan2(leftX - leftCenterX, leftY - leftCenterY);
+    const deg = (rad * (180/Math.PI) * -1) + 180;
     return deg;
 };
-*/
 
-/* rotates knob with mouse
+// rotates left knob with mouse
 lKnob.addEventListener('mousedown', function() {
     lKnob.addEventListener('mousemove', rotate);
         function rotate(e) {
             const result = Math.floor(calculateLeftDegree(e));
-            console.log(result);
             lKnob.style.transform = `rotate(${result}deg)`;
         }
         lKnob.addEventListener('mouseup', function() {
@@ -83,7 +65,35 @@ lKnob.addEventListener('mousedown', function() {
 });
 
 document.addEventListener('click', calculateLeftDegree);
-*/
+
+//Below is for the right knob to rotate when dragged with mouse
+//Right knob center point
+let rCenterX = rKnob.offsetLeft +rKnob.offsetWidth / 2;
+let rCenterY = rKnob.offsetTop + rKnob.offsetHeight / 2;
+
+//Calculates degree from where mouse clicks to where it drags
+function calculateRightDegree(e){
+    const rightX = e.clientX;
+    const rightY = e.clientY;
+
+    const rad = Math.atan2(rightX - rCenterX, rightY - rCenterY);
+    const deg = (rad * (180/Math.PI) * -1) + 180;
+    return deg;
+};
+
+// rotates left knob with mouse
+rKnob.addEventListener('mousedown', function() {
+    rKnob.addEventListener('mousemove', rotate);
+        function rotate(e) {
+            const result = Math.floor(calculateRightDegree(e));
+            rKnob.style.transform = `rotate(${result}deg)`;
+        }
+        rKnob.addEventListener('mouseup', function() {
+            rKnob.removeEventListener('mousemove', rotate);
+        });
+});
+
+document.addEventListener('click', calculateRightDegree);
 
 clear.onclick = () => reloadGrid()
 
