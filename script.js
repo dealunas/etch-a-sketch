@@ -1,4 +1,5 @@
 const container=document.querySelector('#container');
+const clear=document.querySelector('#clear');
 
 let size=32;
 
@@ -28,6 +29,13 @@ function makeGrid(size){
         grid.addEventListener('mouseover', changeColor);
         container.appendChild(grid);
     }
+};
+
+clear.onclick = () => reloadGrid()
+
+function reloadGrid(){
+    container.innerHTML = '';
+    makeGrid(size);
 };
 
 window.onload = () => {
