@@ -51,7 +51,7 @@ let rCenterY = rDot.offsetTop + rDot.offsetHeight / 2;
 console.log(rCenterX, rCenterY);
 */
 
-//Calculates degree from where mouse clicks to where is drags
+/*Calculates degree from where mouse clicks to where is drags
 function calculateLeftDegree(e){
     const leftKnobPos = lKnob.getBoundingClientRect();
     const leftX1 = leftKnobPos.x;
@@ -67,6 +67,7 @@ function calculateLeftDegree(e){
     console.log(deg)
     return deg;
 };
+*/
 
 /* rotates knob with mouse
 lKnob.addEventListener('mousedown', function() {
