@@ -19,3 +19,21 @@ body{
     align-items:center;
     color:gold;
 }
+
+.main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+#container{
+    display:grid;
+    background-color:rgb(151,150,150);
+    height:600px;
+    width:1200px;
+    border-radius:15px;
+    border:2px;
+    border-style:solid;
+    border-color:black;
+}
