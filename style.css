@@ -79,7 +79,7 @@ body{
 }
 
 #left-dot, #right-dot{
-    position:relative;
+    position:fixed;
     background-color:rgb(187, 185, 185);
     height:20px;
     width:20px;
