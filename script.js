@@ -1,19 +1,15 @@
 const container=document.querySelector('#container');
 const clear=document.querySelector('#clear');
-const lKnob=document.querySelector('#left-knob');
-const lDot=document.querySelector('#left-dot');
-const rKnob=document.querySelector('#right-knob');
-const rDot=document.querySelector('#right-dot');
-
-let size=32;
-
+const lKnob=document.querySelector('#sizeKnob');
+const rKnob=document.querySelector('#colorKnob');
+let size = 16;
 //Changes color when mouse is hovering
 function changeColor(e){
     e.target.style.backgroundColor = "black";
 };
 
 //Makes grid
-function makeGrid(size){
+function makeGrid(){
     container.style.gridTemplateColumns=`repeat(${size}, 2fr)`
     container.style.gridTemplateRows=`repeat(${size/2}, 1fr)`
 
@@ -57,12 +53,14 @@ lKnob.addEventListener('mousedown', function() {
     lKnob.addEventListener('mousemove', rotate);
         function rotate(e) {
             const result = Math.floor(calculateLeftDegree(e));
+            console.log(result);
             lKnob.style.transform = `rotate(${result}deg)`;
         }
         lKnob.addEventListener('mouseup', function() {
             lKnob.removeEventListener('mousemove', rotate);
         });
 });
+
 
 document.addEventListener('click', calculateLeftDegree);
 
@@ -95,6 +93,7 @@ rKnob.addEventListener('mousedown', function() {
 
 document.addEventListener('click', calculateRightDegree);
 
+//Reload grid
 clear.onclick = () => reloadGrid()
 
 function reloadGrid(){
@@ -102,7 +101,8 @@ function reloadGrid(){
     makeGrid(size);
 };
 
+
+
 window.onload = () => {
-    makeGrid(size)
-    
+    makeGrid(size);
 };

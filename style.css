@@ -58,7 +58,7 @@ body{
     justify-content:space-between;
 }
 
-#left-knob, #right-knob{
+#sizeKnob, #colorKnob{
     position:relative;
     height:100px;
     width:100px;
@@ -70,15 +70,15 @@ body{
     border-color:black;
 }
 
-#left-knob{
+#sizeKnob{
     margin-left:100px;
 }
 
-#right-knob{
+#colorKnob{
     margin-right:100px;
 }
 
-#left-dot, #right-dot{
+.dot{
     position:fixed;
     background-color:rgb(187, 185, 185);
     height:20px;
