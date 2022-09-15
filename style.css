@@ -58,6 +58,13 @@ body{
     border-radius:10%;
 }
 
+#clear:hover{
+    cursor:pointer;
+    background-color:rgb(131, 112, 3);
+    border-color:rgb(39, 39, 39);
+    color:rgb(24, 24, 24);
+}
+
 #buttons{
     display:flex;
     flex-direction:row;

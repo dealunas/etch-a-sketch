@@ -2,6 +2,7 @@ const container=document.querySelector('#container');
 const clear=document.querySelector('#clear');
 const lKnob=document.querySelector('#sizeKnob');
 const rKnob=document.querySelector('#colorKnob');
+let size = 32;
 //Changes color when mouse is hovering
 function changeColor(e){
     e.target.style.backgroundColor = "black";
