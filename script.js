@@ -2,7 +2,6 @@ const container=document.querySelector('#container');
 const clear=document.querySelector('#clear');
 const lKnob=document.querySelector('#sizeKnob');
 const rKnob=document.querySelector('#colorKnob');
-let size = 16;
 //Changes color when mouse is hovering
 function changeColor(e){
     e.target.style.backgroundColor = "black";
@@ -53,14 +52,13 @@ lKnob.addEventListener('mousedown', function() {
     lKnob.addEventListener('mousemove', rotate);
         function rotate(e) {
             const result = Math.floor(calculateLeftDegree(e));
-            console.log(result);
             lKnob.style.transform = `rotate(${result}deg)`;
-        }
+            }
         lKnob.addEventListener('mouseup', function() {
             lKnob.removeEventListener('mousemove', rotate);
         });
-});
-
+    });
+    
 
 document.addEventListener('click', calculateLeftDegree);
 
@@ -99,6 +97,7 @@ clear.onclick = () => reloadGrid()
 function reloadGrid(){
     container.innerHTML = '';
     makeGrid(size);
+    
 };
 
 
