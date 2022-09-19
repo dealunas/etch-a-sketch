@@ -68,20 +68,25 @@ lKnob.addEventListener('mousedown', function() {
         function makeSize(e) {
             const result = Math.floor(calculateLeftDegree(e));
             lKnob.style.transform = `rotate(${result}deg)`;
-            let value = result;
-            if(value < 50){
+            //Changes size of grid
+            if(result < 70){
                 size = 16;
-            }else if(value >= 50 && value <= 180){
+            }else if(result >= 70 && result < 140){
                 size = 24;
-            }else{
+            }else if (result >= 140 && result < 230){
                 size = 32;
+            }else if (result >= 230 && result < 290){
+                size = 48;
+            }else if (result >= 290 && result < 360){
+                size = 64;
             };
+            sizeUpdate(size);
+            reloadGrid();
         }
         lKnob.addEventListener('mouseup', function() {
             lKnob.removeEventListener('mousemove', makeSize);
     });
-    sizeUpdate(size);
-    reloadGrid();
+    
 });
 
 document.addEventListener('click', calculateLeftDegree);
