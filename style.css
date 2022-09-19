@@ -30,8 +30,11 @@ body{
 
 #size, #color{
     display:flex;
+    justify-content:center;
+    font-weight:bold;
     height:50px;
     width:200px;
+    font-size:34px;
 }
 
 #container{

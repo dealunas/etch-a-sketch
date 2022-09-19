@@ -2,7 +2,9 @@ const container=document.querySelector('#container');
 const clear=document.querySelector('#clear');
 const lKnob=document.querySelector('#sizeKnob');
 const rKnob=document.querySelector('#colorKnob');
-let size = 32;
+const sizeValue=document.querySelector('#size');
+let size = 16;
+
 //Changes color when mouse is hovering
 function changeColor(e){
     e.target.style.backgroundColor = "black";
@@ -33,7 +35,19 @@ function makeGrid(){
     }
 };
 
-//Below is for the left knob to rotate when dragged with mouse
+//Update size text above left knob
+function sizeUpdate(size){
+    sizeValue.innerHTML = `${size} x ${size}`
+};
+
+//Reload grid
+clear.onclick = () => reloadGrid()
+
+function reloadGrid(){
+    container.innerHTML = '';
+    makeGrid(size);
+    
+};
 //Left knob center point
 let leftCenterX = lKnob.offsetLeft +lKnob.offsetWidth / 2;
 let leftCenterY = lKnob.offsetTop + lKnob.offsetHeight / 2;
@@ -48,60 +62,57 @@ function calculateLeftDegree(e){
     return deg;
 };
 
-// rotates left knob with mouse
+// Changes size by rotating left knob
 lKnob.addEventListener('mousedown', function() {
-    lKnob.addEventListener('mousemove', rotate);
-        function rotate(e) {
+    lKnob.addEventListener('mousemove', makeSize);
+        function makeSize(e) {
             const result = Math.floor(calculateLeftDegree(e));
             lKnob.style.transform = `rotate(${result}deg)`;
-            }
+            let value = result;
+            if(value < 50){
+                size = 16;
+            }else if(value >= 50 && value <= 180){
+                size = 24;
+            }else{
+                size = 32;
+            };
+        }
         lKnob.addEventListener('mouseup', function() {
-            lKnob.removeEventListener('mousemove', rotate);
-        });
+            lKnob.removeEventListener('mousemove', makeSize);
     });
-    
+    sizeUpdate(size);
+    reloadGrid();
+});
 
 document.addEventListener('click', calculateLeftDegree);
 
-//Below is for the right knob to rotate when dragged with mouse
 //Right knob center point
-let rCenterX = rKnob.offsetLeft +rKnob.offsetWidth / 2;
-let rCenterY = rKnob.offsetTop + rKnob.offsetHeight / 2;
+let rightCenterX = rKnob.offsetLeft + rKnob.offsetWidth / 2;
+let rightCenterY = rKnob.offsetTop + rKnob.offsetHeight / 2;
 
 //Calculates degree from where mouse clicks to where it drags
 function calculateRightDegree(e){
     const rightX = e.clientX;
     const rightY = e.clientY;
 
-    const rad = Math.atan2(rightX - rCenterX, rightY - rCenterY);
+    const rad = Math.atan2(rightX - rightCenterX, rightY - rightCenterY);
     const deg = (rad * (180/Math.PI) * -1) + 180;
     return deg;
 };
 
-// rotates left knob with mouse
+// Changes size by rotating right knob
 rKnob.addEventListener('mousedown', function() {
     rKnob.addEventListener('mousemove', rotate);
         function rotate(e) {
             const result = Math.floor(calculateRightDegree(e));
             rKnob.style.transform = `rotate(${result}deg)`;
-        }
+        };
         rKnob.addEventListener('mouseup', function() {
             rKnob.removeEventListener('mousemove', rotate);
-        });
+    });
 });
 
 document.addEventListener('click', calculateRightDegree);
-
-//Reload grid
-clear.onclick = () => reloadGrid()
-
-function reloadGrid(){
-    container.innerHTML = '';
-    makeGrid(size);
-    
-};
-
-
 
 window.onload = () => {
     makeGrid(size);
