@@ -1,6 +1,11 @@
 body{
+    display:block;
     margin:0px;
-    background-color:rgb(204,2,2);
+    min-height:100%;
+    background-color:rgb(168, 0, 0);
+    border:20.5px;
+    border-style:outset;
+    border-color:rgb(233, 39, 39);
 }
 
 #header{
@@ -29,21 +34,20 @@ body{
 
 #size, #color{
     display:flex;
-    justify-content:center;
     color:gold;
     font-weight:bold;
     font-size:34px;
 }
 
 #size{
-    width:250px;
+    justify-content:center;
+    width:300px;
 }
 
 .colorContainer{
     display:flex;
-    width:250px;
-    justify-content:flex-start;
-    gap:30px;
+    width:300px;
+    align-items:flex-end;
 }
 
 #container{
@@ -59,8 +63,8 @@ body{
 
 input[type='color']{
     -webkit-appearance:none;
-    height:50px;
-    width:50px;
+    height:75px;
+    width:75px;
     border:none;
     background-color:transparent;
 }
@@ -72,6 +76,7 @@ input[type='color']::-webkit-color-swatch{
 
 #pickColor.disappear{
     visibility:hidden;
+    margin-right:40px;
 }
 
 #clear{
@@ -116,18 +121,15 @@ input[type='color']::-webkit-color-swatch{
     cursor: pointer;
 }
 
-
-
 #sizeKnob{
     margin-left:110px;
 }
 
 #colorKnob{
-    margin-right:110px;
+    margin-right:100px;
 }
 
 .dot{
-    position:fixed;
     margin-left:40px;
     margin-top:5px;
     width: 0;
