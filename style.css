@@ -23,7 +23,6 @@ body{
 .main{
     display:flex;
     justify-content:space-around;
-    align-items:center;
     flex-direction:row;
     align-items:flex-end;
 }
@@ -33,14 +32,18 @@ body{
     justify-content:center;
     color:gold;
     font-weight:bold;
-    height:50px;
-    width:200px;
     font-size:34px;
+}
+
+#size{
+    width:250px;
 }
 
 .colorContainer{
     display:flex;
-    
+    width:250px;
+    justify-content:flex-start;
+    gap:30px;
 }
 
 #container{
@@ -65,6 +68,10 @@ input[type='color']{
 input[type='color']::-webkit-color-swatch{
     border:none;
     border-radius:50%;
+}
+
+#pickColor{
+    visibility:hidden;
 }
 
 #clear{
@@ -99,7 +106,6 @@ input[type='color']::-webkit-color-swatch{
     height:100px;
     width:100px;
     background-color:white;
-    margin: 0px 50px;
     border-radius:50%;
     border:2px;
     border-style:solid;
@@ -113,11 +119,11 @@ input[type='color']::-webkit-color-swatch{
 
 
 #sizeKnob{
-    margin-left:100px;
+    margin-left:110px;
 }
 
 #colorKnob{
-    margin-right:100px;
+    margin-right:110px;
 }
 
 .dot{
