@@ -3,11 +3,21 @@ const clear=document.querySelector('#clear');
 const lKnob=document.querySelector('#sizeKnob');
 const rKnob=document.querySelector('#colorKnob');
 const sizeValue=document.querySelector('#size');
+const colorValue=document.querySelector('#color');
 let size = 16;
+let color = 'Black';
 
 //Changes color when mouse is hovering
 function changeColor(e){
-    e.target.style.backgroundColor = "black";
+    if(color === 'Black'){
+        e.target.style.backgroundColor = 'black';
+    }else if(color === 'Rainbow'){
+        var rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+        var item = rainbow[Math.floor(Math.random()*rainbow.length)];
+        e.target.style.backgroundColor = item;
+    }else{
+        e.target.style.backgroundColor = 'red';
+    };
 };
 
 //Makes grid
@@ -111,6 +121,14 @@ rKnob.addEventListener('mousedown', function() {
         function rotate(e) {
             const result = Math.floor(calculateRightDegree(e));
             rKnob.style.transform = `rotate(${result}deg)`;
+            if(result < 120){
+                color = 'Black';
+            }else if(result >= 120 && result < 240){
+                color = 'Rainbow';
+            }else{
+                color = 'Your Choice';
+            };
+            colorValue.innerHTML = `${color}`;
         };
         rKnob.addEventListener('mouseup', function() {
             rKnob.removeEventListener('mousemove', rotate);
