@@ -70,7 +70,7 @@ input[type='color']::-webkit-color-swatch{
     border-radius:50%;
 }
 
-#pickColor{
+#pickColor.disappear{
     visibility:hidden;
 }
 

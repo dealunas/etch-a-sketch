@@ -4,21 +4,9 @@ const lKnob=document.querySelector('#sizeKnob');
 const rKnob=document.querySelector('#colorKnob');
 const sizeValue=document.querySelector('#size');
 const colorValue=document.querySelector('#color');
+const colorPicker=document.querySelector('#pickColor');
 let size = 16;
 let color = 'Black';
-
-//Changes color when mouse is hovering
-function changeColor(e){
-    if(color === 'Black'){
-        e.target.style.backgroundColor = 'black';
-    }else if(color === 'Rainbow'){
-        var rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-        var item = rainbow[Math.floor(Math.random()*rainbow.length)];
-        e.target.style.backgroundColor = item;
-    }else{
-        e.target.style.backgroundColor = 'red';
-    };
-};
 
 //Makes grid
 function makeGrid(){
@@ -45,6 +33,21 @@ function makeGrid(){
     }
 };
 
+//Changes color when mouse is hovering
+function changeColor(e){
+    if(color === 'Black'){
+        e.target.style.backgroundColor = 'black';
+    }else if(color === 'Rainbow'){
+        var rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+        var item = rainbow[Math.floor(Math.random()*rainbow.length)];
+        e.target.style.backgroundColor = item;
+    }else{
+        color = colorPicker.value;
+        e.target.style.backgroundColor = color;
+    }
+};
+
+
 //Update size text above left knob
 function sizeUpdate(size){
     sizeValue.innerHTML = `${size} x ${size}`
@@ -58,6 +61,7 @@ function reloadGrid(){
     makeGrid(size);
     
 };
+
 //Left knob center point
 let leftCenterX = lKnob.offsetLeft +lKnob.offsetWidth / 2;
 let leftCenterY = lKnob.offsetTop + lKnob.offsetHeight / 2;
@@ -122,10 +126,13 @@ rKnob.addEventListener('mousedown', function() {
             const result = Math.floor(calculateRightDegree(e));
             rKnob.style.transform = `rotate(${result}deg)`;
             if(result < 120){
+                colorPicker.classList.add('disappear');
                 color = 'Black';
             }else if(result >= 120 && result < 240){
+                colorPicker.classList.add('disappear');
                 color = 'Rainbow';
             }else{
+                colorPicker.classList.remove('disappear');
                 color = 'Your Choice';
             };
             colorValue.innerHTML = `${color}`;
