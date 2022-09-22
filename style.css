@@ -1,17 +1,15 @@
 body{
     display:block;
     margin:0px;
-    height:850px;
-    min-height:100%;
     background-color:rgb(168, 0, 0);
-    border:20.5px;
+    border:22.5px;
     border-style:outset;
     border-color:rgb(233, 39, 39);
 }
 
-html{
-    height:100%;
-    height:850px;
+html, body{
+    height:95vh;
+    
 }
 
 #header{
@@ -100,9 +98,8 @@ input[type='color']::-webkit-color-swatch{
 
 #clear:hover{
     cursor:pointer;
-    background-color:rgb(131, 112, 3);
-    border-color:rgb(39, 39, 39);
-    color:rgb(24, 24, 24);
+    opacity:0.8;
+    transition:0.3s;
 }
 
 #buttons{
